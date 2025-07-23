@@ -6,11 +6,13 @@ export default function Home() {
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async () => {
     if (!question.trim()) return;
     setLoading(true);
     setAnswer('');
+    setError("");
 
     try {
       const response = await fetch('http://localhost:8000/travel-info', {
@@ -18,11 +20,16 @@ export default function Home() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ question }),
       });
+      if(!response.ok){
+        const errorData = await response.json();
+        throw new Error(errorData.Detail || "Something went wrong")
+      }
 
       const data = await response.json();
       setAnswer(data?.response || 'No answer received.');
-    } catch (err) {
-      console.error(err);
+    } catch (err:any) {
+      // console.error(err);
+      setError(err.message || " Something went wrong")
       setAnswer('Error fetching response.');
     } finally {
       setLoading(false);
@@ -42,14 +49,52 @@ export default function Home() {
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
         />
-
-        <button
-          onClick={handleSubmit}
-          className="w-full bg-indigo-600 text-white font-semibold py-3 rounded-lg hover:bg-indigo-700 transition"
-          disabled={loading}
-        >
-          {loading ? 'Getting info...' : 'Submit Question'}
-        </button>
+        <div className="flex space-x-4">
+          <button
+            onClick={handleSubmit}
+            className="flex-1 bg-indigo-600 text-white font-semibold py-3 rounded-lg hover:bg-indigo-700 transition disabled:opacity-75"
+            disabled={loading}
+          >
+            {loading ? (
+              <span className="flex items-center justify-center space-x-2">
+                <svg
+                  className="animate-spin h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v4l3.5-3.5L12 0v4a8 8 0 00-8 8z"
+                  />
+                </svg>
+                <span>Getting info...</span>
+              </span>
+            ) : (
+              "Submit Question"
+            )}
+          </button>
+          <button
+            onClick={() => {
+              setQuestion("");
+              setAnswer("");
+              setError("");
+            }}
+            className="flex-1 bg-red-600 text-white-800 font-semibold py-3 rounded-lg hover:bg-gray-300 transition"
+            disabled={loading}
+          >
+            Clear
+          </button>
+        </div>
 
         {answer && (
           <div className="bg-white p-4 border border-gray-200 rounded-lg shadow mt-4">
