@@ -29,7 +29,7 @@ travel-assistant/
 - Python 3.9+
 - pip
 
-### 🧪 Installation Steps
+###  Installation Steps
 
 ```bash
 # Create a virtual environment
@@ -51,7 +51,7 @@ pip install python-dotenv
 pip freeze > requirements.txt
 ```
 
-### 🔐 Environment Configuration
+###  Environment Configuration
 
 Create a `.env` file in the `backend/` folder:
 
@@ -76,14 +76,14 @@ API will be accessible at: `http://localhost:8000`
 - Node.js 18+
 - npm or yarn
 
-### 📦 Installation
+###  Installation
 
 ```bash
 cd frontend
 npm install
 ```
 
-### ▶️ Running the Development Server
+###  Running the Development Server
 
 ```bash
 npm run dev
