@@ -117,6 +117,8 @@ Frontend will be accessible at: [http://localhost:3000](http://localhost:3000)
 - [ ] Display previous messages on frontend
 - [ ] Add persistent DB (SQLite, PostgreSQL, or MongoDB)
 
-
+##PROMPTS:
+- What documents do I need to travel from kenya to Ireland?
+- Tell me a dad joke.
 ---
 
