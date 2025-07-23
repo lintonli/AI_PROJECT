@@ -59,7 +59,7 @@ Create a `.env` file in the `backend/` folder:
 OPENAI_API_KEY=your_openai_api_key_here
 ```
 
-### ▶ Running the API Server
+###  Running the API Server
 
 ```bash
 uvicorn app.main:app --reload --port 8000
@@ -103,7 +103,7 @@ Frontend will be accessible at: [http://localhost:3000](http://localhost:3000)
 
 ---
 
-## 📡 API Endpoints
+##  API Endpoints
 
 | Method | Endpoint             | Description                              |
 |--------|----------------------|------------------------------------------|
