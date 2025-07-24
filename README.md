@@ -15,7 +15,15 @@ travel-assistant/
 │── requirements.txt
 ├── frontend/
 │   ├── src/app/
-│   │   └── page.tsx
+│      └── page.tsx
+│       └──components
+│           ├──chatInput.tsx
+│            ├──chatSidebar.tsx
+│            ├──chatWindow.tsx
+│── services/
+        ├── api.ts
+│── types/
+        ├── index.ts
 │── public/
 │── ...
 ```
@@ -103,19 +111,28 @@ Frontend will be accessible at: [http://localhost:3000](http://localhost:3000)
 
 ---
 
-##  API Endpoints
+API Endpoints
+GET
+/
+Welcome endpoint
+POST
+/threads
+Create a new chat thread
+GET
+/threads
+List all chat threads
+GET
+/threads/{thread_id}
+Get all messages for a specific thread
+POST
+/chat
+Submit a travel question to a specific thread
+DELETE
+/threads/{thread_id}
+Delete a specific thread and all its messages
 
-| Method | Endpoint             | Description                              |
-|--------|----------------------|------------------------------------------|
-| `POST` | `/travel-info`       | Submit a travel question and get a response |
 
----
 
-##  TODO
-
-- [ ] Implement backend storage of `thread_id` conversation history
-- [ ] Display previous messages on frontend
-- [ ] Add persistent DB (SQLite, PostgreSQL, or MongoDB)
 
 ##PROMPTS:
 - What documents do I need to travel from kenya to Ireland?
