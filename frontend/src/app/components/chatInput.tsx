@@ -78,7 +78,6 @@ export default function ChatInput({
         </div>
         <div className="mt-2 text-center text-xs text-gray-500 px-2">
           <span className="sm:inline hidden">Press Enter to send, Shift+Enter for new line</span>
-          <span className="sm:hidden inline">Enter ↵ to send, Shift+Enter for new line</span>
         </div>
       </div>
     </div>
