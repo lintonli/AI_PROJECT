@@ -47,7 +47,7 @@ python -m venv venv
 venv\Scripts\activate
 
 # Or with PowerShell
-.venv\Scripts\Activate.ps1
+venv\Scripts\Activate.ps1
 
 # Install FastAPI and dependencies
 pip install fastapi uvicorn
